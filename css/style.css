@@ -1,0 +1,232 @@
+html, body{
+	font-family: Arial, Helvetica, sans-serif;
+	cursor: default;
+}
+.wrapper{
+	min-height: 100%;
+	overflow: hidden;
+	padding: 80px 0px;
+	
+}
+.container{
+	max-width: 1200px;
+	max-height: 600px;
+	margin: 0 auto;
+	box-shadow: 2px 2px 5px rgb(206, 206, 206); 
+	overflow: hidden;
+}
+.header div.container{
+	justify-content: center;
+	align-items: center;
+	display: flex;
+	background: #f8f8f8;
+	border-radius: 10px 10px 0px 0px;
+}
+.header_logo{
+	transition: all ease 0.4s;
+}
+.header_logo:hover{
+	transform: rotate(-15deg);
+}	
+.header_title{
+	font-family: Lobster;
+	text-align: center;
+	line-height: 80px;
+	font-size: 40px;	
+	font-weight: 800;
+	letter-spacing: 5px;
+	word-spacing: 20px;
+	color: rgb(150, 150, 150);
+	text-shadow: 0px 3px 5px rgb(221, 221, 221);
+	margin-left: 35px;
+}
+.main div.container {
+	display: flex;
+	min-height: 600px;
+}
+.sidebar {
+	min-width: 300px;
+	max-width: 600px;
+	background: rgb(245, 235, 235);
+	position: relative;
+}
+.content {
+	min-width: 900px;
+	background: #f2f2f2; 
+	overflow:scroll;
+}
+
+.close_block{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: rgba(0, 0, 0, 0.4);
+}
+.close-sidebar{
+	width: 100px;
+	height: 100px;
+	transition: all ease 0.4s;
+}
+.close-sidebar:hover{
+	transform-origin: 51px 7px;
+
+
+	transform: rotate(-15deg);
+}
+
+.sidebar_title{
+	margin-top: 30px;
+	text-align: center;
+	font-size: 23px;
+	color: #777;
+	letter-spacing: 4px;
+	line-height:30px;
+}
+.siderbar_groups{
+	margin: 0 auto;
+	padding: 30px 0;
+}
+.groups_list {
+	text-align: center;
+	
+}
+.icon_add_folder{
+	margin-top: 2px;
+	margin-right: 10px;
+	transition: all ease 0.2s;
+}
+.add-folder{
+	margin-bottom: 30px;
+}
+.icon_add_folder:hover{
+	transform: scale(1.15);
+}
+.list-item {
+	justify-content: center;
+	align-items: center;
+	display: flex;
+	font-size: 20px;
+	cursor: pointer;
+	color: #888;	
+	transition: all ease 0.2s;
+}
+.list-item:hover{
+	font-size: 20.2px;
+	text-shadow: 2px 0 5px rgba(0,0,0, 0.1);
+}
+.group-item{
+	font-size: 20px;
+	color: #777;
+	margin-bottom: 13px;
+	padding: 2px 5px;
+	background-color: inherit;
+	border-bottom: 1px solid #888;
+
+}
+
+/* ======CONTENT TASKS ======================================== */
+.add-task-container{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 20px auto;
+	max-width: 80%;
+}
+.new-task-input {
+	text-align: center;
+	background-color: inherit;
+	border-bottom: 1px solid #555;
+	font-size: 18px;
+	line-height: 28px;
+	width: 100%;
+	margin-bottom: 10px;
+}
+.add-new-task-btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: rgb(68, 145, 196);
+	min-width: 50%;
+	padding: 8px;
+	border-radius: 5px;
+	box-shadow: 3px 3px 5px #777;
+	font-size: 18px;
+	color: #fff;
+	text-shadow: 1px 1px 1px #000;
+	transition: all ease 0.2s;
+}
+.add-new-task-btn:hover{
+	transform: scale(0.99);
+	background-color: rgb(138, 194, 231);
+	box-shadow: 3px 3px 3px #777;
+}
+.list-tasks {
+	margin-left: 50px;
+	min-width: 300px;
+	height: 400px;
+	position: relative;
+}
+.empty-box img{
+	position: absolute;
+	top: 27%;
+	left: 35%;
+	width: 180px;
+	height: 180px;
+	filter: grayscale(0.6);
+	opacity: 0.35;
+}
+
+
+.item-todo{
+	font-family: Lobster;
+	padding: 5px 0px;
+	font-size: 22px;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #999;
+	color: rgb(76, 107, 207);
+	letter-spacing: 1.5px;
+}
+.item-todo.important{
+	font-weight: 700;
+	color: rgb(177, 71, 71);
+}
+.item-delete{
+display: inline-block;
+background: url('../img/delete.png');
+background-size: cover;
+width: 25px;
+height: 25px;
+filter: grayscale(1);
+transition: all ease 0.2s;
+}
+.item-delete:hover{
+	filter: grayscale(0);
+}
+.item-important{
+display: inline-block;
+background: url('../img/important.png');
+background-size: cover;
+width: 25px;
+height: 25px;
+filter: grayscale(1);
+transition: all ease 0.2s;
+margin-right: 20px;
+}
+.item-important:hover{
+	filter: grayscale(0);
+}
+
+
+/* ========ПОДВАЛ======================================================================== */
+.footer {
+	max-height: 50px;
+}
+.footer_text{
+	text-align: center;
+	line-height: 50px;
+}

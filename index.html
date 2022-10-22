@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://fonts.googleapis.com/css?family=Acme:regular" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css?family=Lobster:regular" rel="stylesheet" />
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<title>Список дел</title>
+</head>
+<body>
+	
+		<div class="wrapper">
+			<header class="header">
+				<div class="container">
+					<img class="header_logo" src="./img/to-do-list.png" alt="logo" width="60px" height="64px">
+					<h1 class="header_title">
+						Список дел и задач
+					</h1>
+				</div>
+			</header>
+			<main class="main">
+				<div class="container">
+					<aside class="sidebar">
+						<div class="close_block">
+							<img src="./img/closed-sign.png" alt="close" class="close-sidebar">
+						</div>
+						<p class="sidebar_title">
+							Здесь хранятся <br> группы дел
+						</p>
+						<div class="siderbar_groups">
+							<ul class="groups_list">
+								<li class="list-item add-folder">
+									<img class="icon_add_folder" src="./img/add-folder.png" alt="" width="30px" height="30px">
+									Добавить группу
+								</li>
+							</ul>
+						</div>
+					</aside>
+					<div class="content">
+						<div class="add-task-container">
+							<input class="new-task-input" type="text" placeholder="Новая задача">
+							<button class="add-new-task-btn">Добавить</button>
+						</div>
+						<ul class="list-tasks">
+							<!--  -->
+
+						</ul>
+					</div>
+				</div>
+			</main>
+			<footer class="footer">
+				<div class="container">
+					<p class="footer_text">
+						Пет-проект создан для портфолио
+					</p>
+				</div>
+			</footer>
+		</div>
+
+	<script src="./js/main.js"></script>
+</body>
+</html>
