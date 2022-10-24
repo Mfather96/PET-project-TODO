@@ -1,12 +1,19 @@
 html, body{
 	font-family: Arial, Helvetica, sans-serif;
 	cursor: default;
+	min-height: 100%;
 }
 .wrapper{
 	min-height: 100%;
 	overflow: hidden;
 	padding: 80px 0px;
-	
+	display: flex;
+	flex-direction: column;
+}
+@media (max-width: 767px){
+	.wrapper{
+		padding: 0px;
+	}
 }
 .container{
 	max-width: 1200px;
@@ -168,9 +175,14 @@ html, body{
 }
 
 @media (max-width: 767px){
+	.main{
+		min-height: 100%;
+		flex: 1 1 auto;
+	}
 	.main .container{
 		display: flex;
 		flex-direction: column;
+	
 	}	
 	.sidebar{
 		max-width: 100%;
