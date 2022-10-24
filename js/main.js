@@ -23,16 +23,19 @@ checkEmptyList()
 buttonAddNewTask.addEventListener('click', addTask);
 ulTodoList.addEventListener('click', deleteTask);	
 ulTodoList.addEventListener('click', impTask);
+ulTodoList.addEventListener('click', doneTask);
 
 
 // ФУНКЦИИ 
 
 	function addTask(){
 		const taskText = inputNewTask.value;
+		if(!taskText) return;
 		const newTask = {
 			id: Date.now(),
 			text: taskText,
-			imp: false
+			imp: false,
+			done: false
 		}
 
 		tasks.push(newTask);
@@ -84,6 +87,25 @@ ulTodoList.addEventListener('click', impTask);
 
 	}
 
+	function doneTask(event){
+					// Проверяем кликнули ли мы по кнопке "выполнено"
+					if(event.target.dataset.action !== 'done') return;
+
+					const parentNode = event.target.closest('.item-todo');
+					// Определяем ID задачи
+					const id = Number(parentNode.id);
+					// Находим отмеченную задачу
+					const task = tasks.find((task)=> task.id === id);
+					// Конвертируем ключ IMP
+					task.done = !task.done;
+		
+					saveToLocalStorage();
+		
+					parentNode.classList.toggle('done');
+					
+		
+	}
+
 	function checkEmptyList(){
 		if(tasks.length === 0){
 			const emptyBox = `<li class="empty-box">
@@ -102,12 +124,23 @@ ulTodoList.addEventListener('click', impTask);
 	}
 
 	function renderTask(task){
-		const cssClass = task.imp ? 'item-todo important': 'item-todo';
-
+		// Проверяем кнопки на TRUE для вывода соответствующего класса
+			let cssClass = '';
+			if(task.done && task.imp){
+				cssClass = 'item-todo done';
+			} else if(task.done){
+				cssClass = 'item-todo done';
+			} else if(task.imp){
+				cssClass = 'item-todo important';
+			} else {
+				cssClass = 'item-todo';
+			}
+		
 		const taskHTML = `
 			<li id="${task.id}" class="${cssClass}">
 				<button data-action="delete" class="item-delete"></button>
 				<button data-action="important" class="item-important"></button>
+				<button data-action="done" class="item-done"></button>
 				<label>${task.text}</label>	
 			</li>
 			`;

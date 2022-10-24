@@ -195,14 +195,18 @@ html, body{
 	font-weight: 700;
 	color: rgb(177, 71, 71);
 }
+.item-todo.done label{
+	text-decoration: line-through;
+	color: #999;
+}
 .item-delete{
 display: inline-block;
 background: url('../img/delete.png');
 background-size: cover;
 width: 25px;
 height: 25px;
-filter: grayscale(1);
-transition: all ease 0.2s;
+filter: grayscale(0.7);
+transition: all ease 0.1s;
 }
 .item-delete:hover{
 	filter: grayscale(0);
@@ -213,11 +217,23 @@ background: url('../img/important.png');
 background-size: cover;
 width: 25px;
 height: 25px;
-filter: grayscale(1);
-transition: all ease 0.2s;
-margin-right: 20px;
+filter: grayscale(0.7);
+transition: all ease 0.1s;
 }
 .item-important:hover{
+	filter: grayscale(0);
+}
+.item-done{
+	display: inline-block;
+	background: url('../img/done.png');
+	background-size: cover;
+	width: 25px;
+	height: 25px;
+	filter: grayscale(0.7);
+	transition: all ease 0.1s;
+	margin-right: 20px;
+}
+.item-done:hover{
 	filter: grayscale(0);
 }
 
