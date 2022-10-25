@@ -5,26 +5,27 @@
 let inputNewTask = document.querySelector('.new-task-input');
 let buttonAddNewTask = document.querySelector('.add-new-task-btn');
 let ulTodoList = document.querySelector('.list-tasks');
-let emptyBox = document.querySelector('.empty-box')
+let emptyBox = document.querySelector('.empty-box');
+let wrapper = document.querySelector('.wrapper');
 
+// СОЗДАЕМ МАССИВ ДЛЯ ЗАДАЧ
 let tasks = [];
-
+// ПРОВЕРЯЕМ ЛОКАЛЬНОЕ ХРАНИЛИЩЕ
 if(localStorage.getItem('tasks')){
 	tasks = JSON.parse(localStorage.getItem('tasks'));
 	tasks.forEach((task) => renderTask(task));
 }
 
 
-
+// ПРОВЕРЯЕМ ЕСТЬ ЛИ ДАННЫЕ В LOCAL STORAGE 
 checkEmptyList()
 
-// ПРОВЕРЯЕМ ЕСТЬ ЛИ ДАННЫЕ В LOCAL STORAGE 
+
 
 buttonAddNewTask.addEventListener('click', addTask);
 ulTodoList.addEventListener('click', deleteTask);	
 ulTodoList.addEventListener('click', impTask);
 ulTodoList.addEventListener('click', doneTask);
-
 
 // ФУНКЦИИ 
 
@@ -53,22 +54,11 @@ ulTodoList.addEventListener('click', doneTask);
 	function deleteTask(event){
 
 		if(event.target.dataset.action !== 'delete') return;
-
-			const parentNode = event.target.closest('.item-todo');
-			// Определяем ID задачи
-			const id = Number(parentNode.id);
-
-			// Удаляем задачу из массива через фильтрацию
-			tasks = tasks.filter((task) => task.id !== id);
-
-			saveToLocalStorage()
-
-			// Удаляем задачу из разметки
-			parentNode.remove();
-
-			checkEmptyList()
-	}
-
+		surePopUpOpen(event);
+	// 	if(event.target.dataset.action === 'delete'){
+			
+	// }
+}
 	function impTask(event){
 			// Проверяем кликнули ли мы по кнопке "важное"
 			if(event.target.dataset.action !== 'important') return;
@@ -146,3 +136,40 @@ ulTodoList.addEventListener('click', doneTask);
 			`;
 		ulTodoList.insertAdjacentHTML('beforeend', taskHTML);
 	}
+	
+	function surePopUpOpen(event){
+		const questionPopUp = `
+				<div class="sure-wrapper">
+					<div data-action="sure-container" class="sure-container">
+						<p class="sure-text">Вы уверены что хотите удалить?</p>
+						<div class="buttons-sure">
+							<button data-sure="yes" class="button yes">Да</button>
+							<button data-sure="no" class="button no">Нет</button>
+						</div>
+					</div>
+				</div>
+			`;
+		const parentNode = event.target.closest('.item-todo');
+		parentNode.insertAdjacentHTML('beforeend', questionPopUp);
+		parentNode.addEventListener('click', surePopUpClose)
+	}
+
+	function surePopUpClose(event){
+		if(event.target.dataset.sure === 'no') {
+		return event.target.closest('.sure-wrapper').remove();
+		} else if(event.target.dataset.sure === 'yes'){
+			const parentNode = event.target.closest('.item-todo');
+			// Определяем ID задачи
+			const id = Number(parentNode.id);
+
+			// Удаляем задачу из массива через фильтрацию
+			tasks = tasks.filter((task) => task.id !== id);
+
+			saveToLocalStorage()
+
+			// Удаляем задачу из разметки
+			parentNode.remove();
+
+			checkEmptyList()
+		}
+		}
