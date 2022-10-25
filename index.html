@@ -24,20 +24,21 @@
 			<main class="main">
 				<div class="container">
 					<aside class="sidebar">
-						<div class="close_block">
-							<img src="./img/closed-sign.png" alt="close" class="close-sidebar">
+
+						<div class="font-size block-settings">
+							<p class="fz-text settings-text">Размер шрифта</p>
+							<img id="fz-minus" class="minus" src="./img/minus.png" alt="">							
+							<span class="font-size-span">22</span>
+							<img id="fz-plus" class="plus" src="./img/plus.png" alt="plus">								
 						</div>
-						<p class="sidebar_title">
-							Здесь хранятся <br> группы дел
-						</p>
-						<div class="siderbar_groups">
-							<ul class="groups_list">
-								<li class="list-item add-folder">
-									<img class="icon_add_folder" src="./img/add-folder.png" alt="" width="30px" height="30px">
-									<span>Добавить группу</span>
-								</li>
-							</ul>
+
+						<div class="color-font block-settings">
+							<p class="cf-text settings-text">Цвет текста</p>						
+							<input class="font-color" type="color">		
+							<button class="accept">Применить</button>			
 						</div>
+					
+				
 					</aside>
 					<div class="content">
 						<div class="add-task-container">

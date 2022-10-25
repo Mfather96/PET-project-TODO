@@ -173,3 +173,42 @@ ulTodoList.addEventListener('click', doneTask);
 			checkEmptyList()
 		}
 		}
+
+		// ========== SETTINGS ==============================================
+
+		const blockSettings = document.querySelectorAll('.block-settings');
+
+		blockSettings.forEach((elem)=>{
+			elem.addEventListener('click', plusCount)
+			elem.addEventListener('click', fontColor)
+		})
+
+		function plusCount(event){
+			const parentNode = event.target.closest('.block-settings');
+			let spanFz = parentNode.querySelector('.font-size-span');
+			if(event.target.classList.contains('plus')){
+				spanFz.textContent = Number(spanFz.textContent) + 1;
+				ulTodoList.querySelectorAll('.item-todo').forEach((item)=>{
+					item.style.fontSize = spanFz.textContent + 'px';
+				})
+			}
+			if(event.target.classList.contains('minus')){
+				spanFz.textContent = Number(spanFz.textContent) - 1;
+				ulTodoList.querySelectorAll('.item-todo').forEach((item)=>{
+					item.style.fontSize = spanFz.textContent + 'px';
+				})
+			}
+
+		}
+
+		function fontColor(event){
+			const parentNode = event.target.closest('.block-settings');
+			const btnAccept = parentNode.querySelector('.accept');
+			btnAccept.addEventListener('click', ()=>{
+				ulTodoList.querySelectorAll('.item-todo').forEach((item)=>{
+					item.style.color = parentNode.querySelector('.font-color').value;;
+				})
+
+			})
+			
+		}

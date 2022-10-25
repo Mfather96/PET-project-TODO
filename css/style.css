@@ -2,6 +2,7 @@ html, body{
 	font-family: Arial, Helvetica, sans-serif;
 	cursor: default;
 	min-height: 100%;
+	font-size: 14px;
 }
 .wrapper{
 	position: relative;
@@ -83,96 +84,11 @@ html, body{
 	overflow-x:hidden;
 }
 
-.close_block{
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	top: 0;
-	left: 0;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background: rgba(0, 0, 0, 0.4);
-}
-.close-sidebar{
-	width: 100px;
-	height: 100px;
-	transition: all ease 0.4s;
-}
-.close-sidebar:hover{
-	transform-origin: 51px 7px;
-
-
-	transform: rotate(-15deg);
-}
-
-.sidebar_title{
-	margin-top: 30px;
-	text-align: center;
-	font-size: 23px;
-	color: #777;
-	letter-spacing: 4px;
-	line-height:30px;
-}
-.siderbar_groups{
-	margin: 0 auto;
-	padding: 30px 0;
-}
-.groups_list {
-	text-align: center;
-	
-}
-.icon_add_folder{
-	margin-top: 2px;
-	margin-right: 10px;
-	transition: all ease 0.2s;
-}
-.add-folder{
-	margin-bottom: 30px;
-}
-.icon_add_folder:hover{
-	transform: scale(1.15);
-}
-.list-item {
-	justify-content: center;
-	align-items: center;
-	display: flex;
-	font-size: 20px;
-	cursor: pointer;
-	color: #888;	
-	transition: all ease 0.2s;
-}
-.list-item:hover{
-	font-size: 20.2px;
-	text-shadow: 2px 0 5px rgba(0,0,0, 0.1);
-}
-.group-item{
-	font-size: 20px;
-	color: #777;
-	margin-bottom: 13px;
-	padding: 2px 5px;
-	background-color: inherit;
-	border-bottom: 1px solid #888;
-
-}
 @media (max-width: 911px){
 	.sidebar{
 		min-width: 100px;
 	}
-	.sidebar_title{
-		margin-top: 30px;
-		text-align: center;
-		font-size: 18px;
-		color: #777;
-		letter-spacing: 2px;
-		line-height:20px;
-	}
-	.list-item.add-folder span{
-		display: none;
-	}
-	.icon_add_folder{
-		margin: 0 auto;
-	}
+
 }
 
 @media (max-width: 767px){
@@ -190,6 +106,43 @@ html, body{
 		max-height: 90px;
 		display: flex;
 	}
+}
+/* ======= SETTINGS STYLES ==========*/
+.block-settings{
+	display: flex;
+	width: 100%;
+	max-height: 40px;
+	align-items: center;
+	padding: 5px 7px;
+	border-bottom: 1px solid #999;
+}
+.block-settings span{
+	width: 50px;
+	text-align: center;
+}
+.settings-text{
+	font-size: 16px;
+	width: 100%;
+	text-align: center;
+}
+.plus, .minus {
+	width: 30px;
+	height: 30px;
+	filter: grayscale(1);
+	transition: all ease 0.2s;
+}
+.plus:hover, .minus:hover{
+	filter: grayscale(0);
+}
+.accept{
+	padding: 2px 7px;
+	filter: grayscale(1);
+	background-color: rgb(138, 194, 231) ; 
+	border-radius: 3px;
+	transition: all ease 0.2s;
+}
+.accept:hover{
+	filter: grayscale(0);
 }
 /* ======CONTENT TASKS ======================================== */
 .add-task-container{
