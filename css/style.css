@@ -358,7 +358,7 @@ transition: all ease 0.1s;
 	text-align: center;
 	font-family: Arial, Helvetica, sans-serif;
 	letter-spacing: 0px;
-	text-shadow: 1.3px 1.3px 0px rgba(0,0,0, 0.3);
+	text-shadow: 1px 1px 0px rgba(0,0,0, 0.3);
 	color: #000;
 }
 .button-sure{
