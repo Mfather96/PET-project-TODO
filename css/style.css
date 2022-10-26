@@ -84,6 +84,7 @@ html, body{
 	background: #f2f2f2; 
 	overflow:scroll;
 	overflow-x:hidden;
+	position: relative;
 }
 
 @media (max-width: 911px){
@@ -283,6 +284,22 @@ transition: all ease 0.1s;
 		margin-left: 5px;
 	}
 	
+}
+.delete-all{
+	position: absolute;
+	bottom: 5%;
+	left: 50%;
+	transform: translate(-50%);
+	min-width: 100px;
+	border: 1px solid #777;
+	border-radius: 5px;
+	padding: 10px 15px;
+	background: rgb(235, 235, 164);
+	transition: all ease 0.2s;
+}
+.delete-all:hover{
+	background: rgb(236, 236, 203);
+	box-shadow: 0 0 5px rgba(0,0,0, 0.2);
 }
 /* ========ПОДВАЛ======================================================================== */
 .footer {

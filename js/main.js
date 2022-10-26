@@ -7,6 +7,7 @@ let buttonAddNewTask = document.querySelector('.add-new-task-btn');
 let ulTodoList = document.querySelector('.list-tasks');
 let emptyBox = document.querySelector('.empty-box');
 let wrapper = document.querySelector('.wrapper');
+let deleteAllBtn = document.querySelector('.delete-all')
 
 // СОЗДАЕМ МАССИВ ДЛЯ ЗАДАЧ
 let tasks = [];
@@ -26,6 +27,7 @@ buttonAddNewTask.addEventListener('click', addTask);
 ulTodoList.addEventListener('click', deleteTask);	
 ulTodoList.addEventListener('click', impTask);
 ulTodoList.addEventListener('click', doneTask);
+deleteAllBtn.addEventListener('click', surePopUpDeleteAllTasks)
 
 // ФУНКЦИИ 
 
@@ -59,6 +61,15 @@ ulTodoList.addEventListener('click', doneTask);
 			
 	// }
 }
+
+	function deleteAllTasks(){
+
+		tasks.splice(0, tasks.length);
+		ulTodoList.innerHTML = '';
+		
+		saveToLocalStorage();
+	}
+
 	function impTask(event){
 			// Проверяем кликнули ли мы по кнопке "важное"
 			if(event.target.dataset.action !== 'important') return;
@@ -154,6 +165,29 @@ ulTodoList.addEventListener('click', doneTask);
 		parentNode.addEventListener('click', surePopUpClose)
 	}
 
+	function surePopUpDeleteAllTasks(){
+		const questionPopUp = `
+				<div class="sure-wrapper">
+					<div data-action="sure-container" class="sure-container">
+						<p class="sure-text">Вы уверены что хотите удалить все задачи?</p>
+						<div class="buttons-sure">
+							<button data-sure="yes-all" class="button yes">Да</button>
+							<button data-sure="no-all" class="button no">Нет</button>
+						</div>
+					</div>
+				</div>
+			`;
+			ulTodoList.insertAdjacentHTML('beforeend', questionPopUp);
+			ulTodoList.addEventListener('click', surePopUpDeleteAllTasksCLose);
+	}
+	function surePopUpDeleteAllTasksCLose(event){
+		if(event.target.dataset.sure === 'no-all') {
+			return event.target.closest('.sure-wrapper').remove();
+		} else if(event.target.dataset.sure === 'yes-all'){
+			deleteAllTasks();
+		}
+	}
+
 	function surePopUpClose(event){
 		if(event.target.dataset.sure === 'no') {
 		return event.target.closest('.sure-wrapper').remove();
@@ -180,12 +214,15 @@ ulTodoList.addEventListener('click', doneTask);
 
 		blockSettings.forEach((elem)=>{
 			elem.addEventListener('click', plusCount)
-			elem.addEventListener('click', fontColor)
 		})
 
 		function plusCount(event){
+
 			const parentNode = event.target.closest('.block-settings');
+
 			let spanFz = parentNode.querySelector('.font-size-span');
+
+		
 			if(event.target.classList.contains('plus')){
 				spanFz.textContent = Number(spanFz.textContent) + 1;
 				ulTodoList.querySelectorAll('.item-todo').forEach((item)=>{
@@ -199,16 +236,4 @@ ulTodoList.addEventListener('click', doneTask);
 				})
 			}
 
-		}
-
-		function fontColor(event){
-			const parentNode = event.target.closest('.block-settings');
-			const btnAccept = parentNode.querySelector('.accept');
-			btnAccept.addEventListener('click', ()=>{
-				ulTodoList.querySelectorAll('.item-todo').forEach((item)=>{
-					item.style.color = parentNode.querySelector('.font-color').value;;
-				})
-
-			})
-			
 		}
